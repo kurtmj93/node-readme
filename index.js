@@ -7,13 +7,18 @@ const fs = require('fs');
 const questions = [
     {
         type: 'input',
-        name: 'filename',
-        message: 'What would you like to name the README file? Note: the output will append "-README.md"'
+        name: 'title',
+        message: 'What is the name of your project?'
     },
     {
         type: 'input',
         name: 'description',
         message: 'Please provide a description of your app:'
+    },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'Please provide any installation instructions:'
     }
 ];
 
@@ -32,7 +37,7 @@ function init() {
     inquirer
         .prompt(questions)
         .then((answers) => {
-        writeToFile(answers.filename, generateMarkdown(answers));
+        writeToFile(answers.title.split(" ").join(""), generateMarkdown(answers));
         });
 };
 
