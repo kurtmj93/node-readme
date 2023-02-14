@@ -7,6 +7,27 @@ const fs = require('fs');
 const questions = [
     {
         type: 'input',
+        name: 'email',
+        validate: function(email) {
+            // Regex email check test found on stackoverflow
+            var valid = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+            // alert via console.log if invalid
+            if (valid !== true) {
+                console.log("\n Please enter a valid email.");
+                return;
+            } else {
+                return valid;
+            }
+        },
+        message: 'What is your email address?'
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'What is your GitHub username?'
+    },
+    {
+        type: 'input',
         name: 'title',
         message: 'What is the name of your project?'
     },
@@ -19,7 +40,7 @@ const questions = [
         type: 'input',
         name: 'installation',
         message: 'Please provide any installation instructions:'
-    }
+    },
 ];
 
 // TODO: Create a function to write README file
