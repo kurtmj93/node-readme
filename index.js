@@ -7,8 +7,9 @@ const fs = require('fs');
 const questions = [];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile('genREADME.md', )
+function writeToFile(data) {
+    var filename = `${data.filename}-README.md`;
+    fs.writeFile(filename, data);
 }
 
 // TODO: Create a function to initialize app
@@ -16,7 +17,7 @@ function init() {
     inquirer
         .prompt(questions)
         .then((answers) => {
-        writeToFile('genREADME.md', generateMarkdown(answers));
+        writeToFile(generateMarkdown(answers));
         });
 };
 
