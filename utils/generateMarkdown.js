@@ -25,7 +25,7 @@ function generateMarkdown(data) {
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Credits](#credits)
-  - [License](#license)
+  ${renderLicenseLink(data.license)}
   - [Questions](#questions)
 
   ## Installation
