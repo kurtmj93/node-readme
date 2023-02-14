@@ -18,9 +18,9 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(data) {
-    var filename = `${data.filename}-README.md`;
-    fs.writeFile(filename, data, (err) =>{
+function writeToFile(fileName, data) {
+    var file = `${fileName}-README.md`;
+    fs.writeFile(file, data, (err) =>{
         if (err) {
             console.log(err);
         }
@@ -32,7 +32,7 @@ function init() {
     inquirer
         .prompt(questions)
         .then((answers) => {
-        writeToFile(generateMarkdown(answers));
+        writeToFile(answers.filename, generateMarkdown(answers));
         });
 };
 
