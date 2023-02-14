@@ -20,7 +20,11 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(data) {
     var filename = `${data.filename}-README.md`;
-    fs.writeFile(filename, data);
+    fs.writeFile(filename, data, (err) =>{
+        if (err) {
+            console.log(err);
+        }
+    });
 }
 
 // TODO: Create a function to initialize app
