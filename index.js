@@ -1,9 +1,10 @@
-// TODO: Include packages needed for this application
+// Include packages needed for this application
+
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
-const fs = require('fs');
+const fs = require('fs'); // allows writing to file system (fs)
 
-// TODO: Create an array of questions for user input
+// Array of inquirer questions for user input
 const questions = [
     {
         type: 'input',
@@ -41,26 +42,52 @@ const questions = [
         name: 'installation',
         message: 'Please provide any installation instructions:'
     },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Please provide any usage instructions:'
+    },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'Please provide any installation instructions:'
+    },
+    {
+        type: 'input',
+        name: 'contributing',
+        message: 'Please provide any guidelines for contributors:'
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'Please provide any test instructions:'
+    },
+    {
+        type: 'input',
+        name: 'credits',
+        message: 'Please provide any credits & thank-yous, here:'
+    }
 ];
 
-// TODO: Create a function to write README file
+// Function to write the README file
 function writeToFile(fileName, data) {
     var file = `${fileName}-README.md`;
     fs.writeFile(file, data, (err) =>{
         if (err) {
             console.log(err);
-        }
+        } // simple err callback
     });
 }
 
-// TODO: Create a function to initialize app
+// Function to initialize app
 function init() {
+    //inquirer package makes this function simple & elegant
     inquirer
         .prompt(questions)
         .then((answers) => {
-        writeToFile(answers.title.split(" ").join(""), generateMarkdown(answers));
+        writeToFile(answers.title.split(" ").join(""), generateMarkdown(answers)); // .split(" ").join("") ensures spaces are eliminated from title for use as a filename
         });
 };
 
-// Function call to initialize app
+// initialize app
 init();
